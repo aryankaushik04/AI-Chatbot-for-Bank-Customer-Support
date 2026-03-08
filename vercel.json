@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "examples/django_example/django_example/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/examples/django_example/django_example/static/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "examples/django_example/django_example/wsgi.py"
+    }
+  ]
+}
