@@ -1,0 +1,31 @@
+categories:
+- banking
+conversations:
+- - Hello
+  - Hello, welcome to Bank Support. How can I assist you today?
+- - I want to open a new account.
+  - You can open a new account online through our website or by visiting any of our branches. Would you like me to send you the link?
+- - How to open account?
+  - Opening an account is easy! You can do it through our mobile app, on our website, or by visiting a branch with your ID.
+- - How to reset ATM PIN?
+  - You can reset your ATM PIN at any of our ATMs using the 'PIN Change' option, or through our mobile app under 'Card Settings'.
+- - How can I reset my password?
+  - To reset your password, please go to the login page and click on "Forgot Password". You will receive an email with instructions.
+- - What are the bank's working hours?
+  - Our branches are typically open from 9:00 AM to 5:00 PM, Monday to Friday. Some branches may have different hours on Saturdays.
+- - I lost my credit card.
+  - I'm sorry to hear that. You should block your card immediately through our mobile app or by calling our 24/7 support line at 1-800-BANK-HELP.
+- - What is the current interest rate for savings accounts?
+  - Our current interest rate for savings accounts is 1.5% APY. This rate is subject to change.
+- - What is your customer service number?
+  - Our customer service is available 24/7 at 1-800-BANK-HELP.
+- - Can I apply for a loan?
+  - Yes, you can apply for personal, home, or auto loans online or at any branch. Would you like to see the current rates?
+- - How do I check my transaction history?
+  - You can view your transaction history anytime through our mobile app or online banking portal.
+- - Are there any hidden fees for my account?
+  - We pride ourselves on transparency. You can view our full fee schedule on our website. Most of our basic accounts have no monthly maintenance fees if you meet the minimum balance requirement.
+- - How can I update my address?
+  - You can update your contact information through the 'Profile' section in online banking or by visiting a branch with proof of your new address.
+- - What should I do if I see an unauthorized transaction?
+  - If you spot a transaction you didn't authorize, please report it immediately via the mobile app or call us at 1-800-BANK-HELP to secure your account.

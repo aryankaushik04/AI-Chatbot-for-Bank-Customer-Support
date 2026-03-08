@@ -1,0 +1,121 @@
+{% load static %}
+<!doctype html>
+<html>
+  <head>
+    <title>BankSupportBot - Customer Support</title>
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  </head>
+  <body>
+
+    {% include 'nav.html' %}
+    {% csrf_token %}
+
+    <div class="chat-container">
+      <div class="chat-header">
+        <h2><i class="fas fa-university"></i> BankSupportBot</h2>
+        <p>Your 24/7 Virtual Banking Assistant</p>
+      </div>
+
+      <div class="chat-log js-chat-log" id="chat-log">
+        <div class="message bot">
+          Hello! Welcome to Bank Support. How can I assist you today?
+        </div>
+      </div>
+
+      <div class="chat-input-area">
+        <div class="chat-input-group">
+          <input type="text" class="js-text" placeholder="Type your banking question here..." autofocus/>
+          <button class="btn btn-primary js-say">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/js.cookie.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script>
+      var chatSupportUrl = '{% url "chat_support" %}';
+
+      function getCsrfToken() {
+        return Cookies.get('csrftoken');
+      }
+
+      function csrfSafeMethod(method) {
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+      }
+
+      $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", getCsrfToken());
+          }
+        }
+      });
+
+      var $chatlog = $('.js-chat-log');
+      var $input = $('.js-text');
+      var $sayButton = $('.js-say');
+
+      function createRow(text, type) {
+        var $row = $('<div class="message ' + type + '"></div>');
+        $row.html(text);
+        $chatlog.append($row);
+        $chatlog[0].scrollTop = $chatlog[0].scrollHeight;
+        return $row;
+      }
+
+      function submitInput() {
+        var text = $input.val().trim();
+        if (!text) return;
+
+        var inputData = { 'text': text };
+
+        // Display the user's input
+        createRow(text, 'user');
+
+        // Clear the input field
+        $input.val('');
+
+        // Add a loading indicator
+        var $loadingRow = createRow(
+          `
+          <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          `,
+          'bot'
+        );
+
+        $.ajax({
+          type: 'POST',
+          url: chatSupportUrl,
+          data: JSON.stringify(inputData),
+          contentType: 'application/json',
+          success: function(statement) {
+            $loadingRow.html(statement.text);
+            $chatlog[0].scrollTop = $chatlog[0].scrollHeight;
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+            $loadingRow.html('An error occurred. Please try again.');
+            $loadingRow.addClass('bg-danger text-white');
+          }
+        });
+      }
+
+      $sayButton.click(function() {
+        submitInput();
+      });
+
+      $input.keydown(function(event) {
+        if (event.keyCode == 13) {
+          submitInput();
+        }
+      });
+    </script>
+  </body>
+</html>

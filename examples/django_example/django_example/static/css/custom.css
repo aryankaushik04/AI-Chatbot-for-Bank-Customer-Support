@@ -1,0 +1,87 @@
+/* Custom styles for BankSupportBot interface */
+body {
+    background-color: #f4f7f6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.chat-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+}
+
+.chat-header {
+    background: #004a99;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.chat-log {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #f9f9f9;
+}
+
+.message {
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    max-width: 80% ;
+    clear: both;
+}
+
+.message.user {
+    background: #007bff;
+    color: white;
+    float: right;
+    border-bottom-right-radius: 2px;
+}
+
+.message.bot {
+    background: #e9ecef;
+    color: #333;
+    float: left;
+    border-bottom-left-radius: 2px;
+}
+
+.chat-input-area {
+    padding: 20px;
+    background: white;
+    border-top: 1px solid #eee;
+}
+
+.chat-input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input-group input {
+    flex: 1;
+    border-radius: 25px;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+.chat-input-group button {
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.spinner-border {
+    width: 1.5rem;
+    height: 1.5rem;
+}
